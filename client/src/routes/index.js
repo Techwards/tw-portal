@@ -1,24 +1,20 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 //pages
-import PublicPage from '../pages/PublicPage'
-import LoginPage from '../pages/LoginPage'
-import Dashboard from '../pages/Dashboard'
+import PublicPage from "../pages/PublicPage";
+import LoginPage from "../pages/LoginPage";
+import Dashboard from "../pages/Dashboard";
 
 // Auth
-import ProvideAuth from './Auth' 
+import ProvideAuth from "./Auth";
 
 //route
-import Private from './Private'
+import Private from "./Private";
 
 //component
-import AuthButton from '../components/AuthButton'
+import AuthButton from "../components/AuthButton";
+import FormikOverview from "../pages/FormikOverview";
 
 const Routes = () => {
   return (
@@ -46,11 +42,14 @@ const Routes = () => {
             <Private path="/dashboard">
               <Dashboard />
             </Private>
+            <Route path="/formik-overview">
+              <FormikOverview />
+            </Route>
           </Switch>
         </div>
       </Router>
     </ProvideAuth>
   );
-}
+};
 
 export default Routes;
