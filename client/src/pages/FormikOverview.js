@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Formik } from "formik";
+import { InputField, MemoInputField } from "./../components/Input";
 
 class FormikOverview extends Component {
   constructor(props) {
@@ -26,43 +27,47 @@ class FormikOverview extends Component {
   render() {
     const { email, password, emailF, passwordF } = this.state;
     return (
-      <div className="container mx-auto">
+      <div className="container mx-auto ">
         <p className="font-sans text-xl font-bold text-center">
           Formik Overview
         </p>
-        <div class="grid md:grid-cols-4 md:gap-4 pt-4">
-          <div className="col-start-2 col-end-4 shadow-lg rounded p-4">
+        <div class="grid md:grid-cols-4 md:gap-4 pt-4 ml-2 mr-2 sm:ml-0 sm:mr-0 ">
+          <div className="md:col-start-2 md:col-end-4 shadow-lg rounded p-4 bg-blue-50	">
             <div className="p-2">
               <p className="text-sm">Generic React Form Handling</p>
-              <div className="flex justify-start">
+              <div className="grid sm:grid-cols-2 gap-3 mt-2 sm:mt-0">
                 <InputField
                   name="email"
                   value={email}
                   placeholder={"Enter email address"}
                   inputHandler={this.inputHandler}
+                  type="email"
                 />
                 <InputField
                   name="password"
                   value={password}
                   placeholder={"Enter password"}
                   inputHandler={this.inputHandler}
+                  type="password"
                 />
               </div>
             </div>
             <div className="p-2">
               <p className="text-sm">React Memo Form Handling</p>
-              <div className="flex justify-start">
+              <div className="grid sm:grid-cols-2 gap-3 mt-2 sm:mt-0">
                 <MemoInputField
                   name="emailF"
                   value={emailF}
                   placeholder={"Enter email memo address"}
                   inputHandler={this.inputHandler}
+                  type="email"
                 />
                 <MemoInputField
                   name="passwordF"
                   value={passwordF}
                   placeholder={"Enter password memo"}
                   inputHandler={this.inputHandler}
+                  type="password"
                 />
               </div>
             </div>
@@ -107,9 +112,13 @@ class FormikOverview extends Component {
                 }) => {
                   console.log("formik form re-render");
                   return (
-                    <form onSubmit={handleSubmit} className="grid grid-cols-6 ">
-                      <div>
+                    <form
+                      onSubmit={handleSubmit}
+                      className="grid sm:grid-cols-2 gap-3 mt-2 sm:mt-0"
+                    >
+                      <div className="w-full mr-3">
                         <input
+                          autoComplete={"off"}
                           type="email"
                           name="email"
                           onChange={(event) => {
@@ -117,16 +126,17 @@ class FormikOverview extends Component {
                             setFieldValue(name, value);
                           }}
                           placeholder="Enter email formik"
-                          className="rounded shadow-md border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                          className="w-full	mr-3 sm:mt-3 sm:mb-3 rounded shadow-md border-transparent focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
                           onBlur={handleBlur}
                           value={values.email}
                         />
-                        <p className="text-red-900">
+                        <p className="text-xs text-red-600">
                           {errors.email && touched.email && errors.email}
                         </p>
                       </div>
-                      <div>
+                      <div className="w-full mr-3">
                         <input
+                          autoComplete={"off"}
                           type="password"
                           name="password"
                           onChange={(event) => {
@@ -134,11 +144,11 @@ class FormikOverview extends Component {
                             setFieldValue(name, value);
                           }}
                           placeholder="Enter password formik"
-                          className="border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                          className="w-full	mr-3 sm:mt-3 sm:mb-3 rounded shadow-md border-transparent focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
                           onBlur={handleBlur}
                           value={values.password}
                         />
-                        <p className="text-red-900">
+                        <p className="text-xs text-red-600">
                           {errors.password &&
                             touched.password &&
                             errors.password}
@@ -160,51 +170,3 @@ class FormikOverview extends Component {
 }
 
 export default FormikOverview;
-
-const InputField = (props) => {
-  const { name, value, placeholder, inputHandler } = props;
-  console.log(`${name} is rendering`);
-  return (
-    <input
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={inputHandler}
-      className="w-full	mr-3 mt-3 mb-3 rounded shadow-md border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-      type="text"
-    />
-  );
-};
-
-const MemoInputField = React.memo((props) => {
-  const { name, value, placeholder, inputHandler } = props;
-
-  // const [emailM, setEmailM] = React.useState("");
-
-  // const inputHandlerM = (event) => {
-  //   try {
-  //     const { name, value } = event.target;
-  //     setEmailM(value);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  console.log(`${name} is rendering -> memo`);
-  return (
-    <input
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      onChange={inputHandler}
-      className="w-full	mr-3 mt-3 mb-3 rounded shadow-md border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-      type="text"
-    />
-    //  <input
-    //   name={"emailM"}
-    //   value={emailM}
-    //   placeholder={"email address"}
-    //   onChange={inputHandlerM}
-    // />
-  );
-});
