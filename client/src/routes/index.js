@@ -19,6 +19,7 @@ import Private from './Private'
 
 //component
 import AuthButton from '../components/AuthButton'
+import InfinateScrolling from "../pages/InfinateScrolling";
 
 const Routes = () => {
   return (
@@ -42,6 +43,9 @@ const Routes = () => {
             </Route>
             <Route path="/login">
               <LoginPage />
+            </Route>
+            <Route path="/feed">
+              <InfinateScrolling />
             </Route>
             <Private path="/dashboard">
               <Dashboard />
