@@ -17,10 +17,10 @@ useEffect(() => {
         dataLength={isItems.length} //This is important field to render the next data
         next={fetchData}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={<div class="shadow-lg m-4 p-6 bg-red-100">Loading...</div>}
         >
        {isItems.map((i, index) => (
-            <div key={index}>
+            <div class="shadow-lg m-4 p-6 bg-blue-100"  key={index}>
                 {i.title}
             </div>
           ))}
