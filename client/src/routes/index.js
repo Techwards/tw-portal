@@ -15,6 +15,7 @@ import Private from "./Private";
 //component
 import AuthButton from "../components/AuthButton";
 import FormikOverview from "../pages/FormikOverview";
+import ChartsToolkit from "../pages/ChartsToolkit";
 
 const Routes = () => {
   return (
@@ -44,6 +45,9 @@ const Routes = () => {
             </Private>
             <Route path="/formik-overview">
               <FormikOverview />
+            </Route>
+            <Route path="/chart-toolkit">
+              <ChartsToolkit />
             </Route>
           </Switch>
         </div>
