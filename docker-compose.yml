@@ -1,0 +1,28 @@
+version: "3"
+services:
+  client:
+    container_name: node_web_client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: node_client
+    ports: 
+      - "3000:3000"
+    volumes:
+      - ./client/public:/usr/app/public
+      - ./client/src:/usr/app/src
+    env_file:
+      - ./client/src/.env
+
+  server:
+    container_name: node_dev_server
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: node_server    
+    ports:
+      - "3200:3200"
+    volumes:
+      - ./server/src:/usr/app/src
+    env_file:
+      - ./server/src/.env
